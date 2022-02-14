@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'ninja_id.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Home()
+    home: NinjaId()
   ));
 
 }
@@ -16,12 +17,34 @@ class Home extends StatelessWidget {
       appBar : AppBar(
         title: const Text("My first flutter app")
         ),
-      body: const Center(
-        child: Text("Click on the button below") 
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(20.0),
+            child: const Text("Hi"),
+            color: Colors.red,
+          ),
+          Container(
+            //margin: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
+            child: const Text("Hi"),
+            color: Colors.blue,
+          ),
+          Container(
+            padding: const EdgeInsets.all(20.0),
+            child: const Text("Hi"),
+            color: Colors.green,
+          )
+        ]
         ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => "",
-        child: const Text("-"),
+        child: const Icon(
+          Icons.add,
+          //color: Colors.black,
+          size: 35.0,
+        )
       ),
     );
   }
