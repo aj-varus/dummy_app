@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'ninja_id.dart';
+import 'quotes_list.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: NinjaId()
+    home: QuoteList()
   ));
 
 }
