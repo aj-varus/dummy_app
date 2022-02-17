@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'ninja_id.dart';
-import 'quotes_list.dart';
+//import 'quotes_list.dart';
 import 'package:dummy_app/pages/location.dart';
 import 'package:dummy_app/pages/payment.dart';
 
