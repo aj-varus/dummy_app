@@ -11,7 +11,6 @@ class WorldTime {
       Uri url = Uri.parse(
           "http://worldtimeapi.org/api/timezone/Asia/Kolkata"); //Uri.parse("https://jsonplaceholder.typicode.com/todos/1");
       http.Response response = await http.get(url);
-      print(response.body);
       Map map = jsonDecode(response.body);
 
       DateTime utcDatetime = DateTime.parse(map["utc_datetime"]);

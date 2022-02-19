@@ -8,9 +8,11 @@ import 'package:dummy_app/pages/payment.dart';
 void main() {
   runApp(MaterialApp(
     //home: const QuoteList(),
+    initialRoute: "/payment",
     routes: {
       "/" :(context) => const Location(),
-      "/payment" :(context) => const Payment()
+      "/payment" :(context) => const Payment(),
+      "/location" :(context) => const Location()
     },
   ));
 

@@ -14,9 +14,12 @@ class _PaymentState extends State<Payment> {
   void getTime() async {
     WorldTime worldTime = WorldTime();
     DateTime dateTime = await worldTime.getTime();
-    setState(() {
-      time = dateTime.toString();
-    });
+    //time = dateTime.toString();
+    Navigator.pushReplacementNamed(context, "/location",
+        arguments: {"time": dateTime});
+    // setState(() {
+    //   time = dateTime.toString();
+    // });
   }
 
   @override
@@ -29,7 +32,7 @@ class _PaymentState extends State<Payment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Payment"),
+        title: const Text("Loading"),
         centerTitle: true,
       ),
       body: SafeArea(child: Text(time)),
