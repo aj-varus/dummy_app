@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:dummy_app/services/world_time.dart';
 
 class Payment extends StatefulWidget {
   const Payment({Key? key}) : super(key: key);
@@ -10,18 +9,20 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
-  void getData() async {
-    Uri url = Uri.parse("https://jsonplaceholder.typicode.com/todos/1");
-    http.Response response = await http.get(url);
-    Map map = jsonDecode(response.body);
-    print(map["title"]);
+  String time = "loading";
+
+  void getTime() async {
+    WorldTime worldTime = WorldTime();
+    DateTime dateTime = await worldTime.getTime();
+    setState(() {
+      time = dateTime.toString();
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    getData();
-    print("yoshi");
+    getTime();
   }
 
   @override
@@ -31,7 +32,7 @@ class _PaymentState extends State<Payment> {
         title: const Text("Payment"),
         centerTitle: true,
       ),
-      body: const SafeArea(child: Text("Payment")),
+      body: SafeArea(child: Text(time)),
     );
   }
 }
