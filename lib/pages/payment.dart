@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dummy_app/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Payment extends StatefulWidget {
   const Payment({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _PaymentState extends State<Payment> {
   void getTime() async {
     WorldTime worldTime = WorldTime();
     DateTime dateTime = await worldTime.getTime();
-    //time = dateTime.toString();
+    await Future.delayed(const Duration(seconds: 3));
     Navigator.pushReplacementNamed(context, "/location",
         arguments: {"time": dateTime});
     // setState(() {
@@ -31,11 +32,11 @@ class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Loading"),
-        centerTitle: true,
+      backgroundColor: Colors.blue[900],
+      body: const SpinKitFadingCube(
+        color: Colors.white,
+        size: 80.0,
       ),
-      body: SafeArea(child: Text(time)),
     );
   }
 }

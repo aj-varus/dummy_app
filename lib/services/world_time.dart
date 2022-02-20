@@ -3,6 +3,7 @@ import 'dart:convert';
 
 class WorldTime {
   DateTime indianTime = DateTime(2022);
+  bool isDayTime = false;
 
   Future<DateTime> getTime() async {
     String hours, minutes;
@@ -21,12 +22,9 @@ class WorldTime {
           .add(Duration(hours: int.parse(hours), minutes: int.parse(minutes)));
     } catch (e) {
       print("Error found");
-    }
-    finally {
+    } finally {
       // ignore: control_flow_in_finally
       return indianTime;
     }
-
-    
   }
 }
