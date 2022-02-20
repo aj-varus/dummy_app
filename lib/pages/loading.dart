@@ -17,7 +17,7 @@ class _PaymentState extends State<Payment> {
     DateTime dateTime = await worldTime.getTime();
     await Future.delayed(const Duration(seconds: 3));
     Navigator.pushReplacementNamed(context, "/location",
-        arguments: {"time": dateTime});
+        arguments: {"time": dateTime, "isDayTime" : worldTime.isDayTime});
     // setState(() {
     //   time = dateTime.toString();
     // });

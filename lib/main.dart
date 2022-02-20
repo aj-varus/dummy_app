@@ -1,18 +1,20 @@
+import 'package:dummy_app/pages/choose_location.dart';
 import 'package:flutter/material.dart';
 //import 'ninja_id.dart';
 //import 'quotes_list.dart';
 import 'package:dummy_app/pages/location.dart';
-import 'package:dummy_app/pages/payment.dart';
+import 'package:dummy_app/pages/loading.dart';
 
 
 void main() {
   runApp(MaterialApp(
     //home: const QuoteList(),
-    initialRoute: "/payment",
+    initialRoute: "/loading",
     routes: {
       "/" :(context) => const Location(),
-      "/payment" :(context) => const Payment(),
-      "/location" :(context) => const Location()
+      "/loading" :(context) => const Payment(),
+      "/location" :(context) => const Location(),
+      "/choose_location" :(context) => const ChooseLocation()
     },
   ));
 

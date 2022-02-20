@@ -20,6 +20,7 @@ class WorldTime {
       minutes = offsetList[1];
       indianTime = utcDatetime
           .add(Duration(hours: int.parse(hours), minutes: int.parse(minutes)));
+      isDayTime = indianTime.hour >= 6 && indianTime.hour <= 18 ? true : false;
     } catch (e) {
       print("Error found");
     } finally {
