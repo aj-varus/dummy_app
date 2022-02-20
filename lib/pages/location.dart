@@ -13,37 +13,52 @@ class _LocationState extends State<Location> {
 
   @override
   Widget build(BuildContext context) {
-    map = ModalRoute.of(context)!.settings.arguments! as Map;
+    map = map.isNotEmpty? map : ModalRoute.of(context)!.settings.arguments! as Map;
     DateTime time = map["time"];
     bool isDayTime = map["isDayTime"] as bool;
-    print(isDayTime);
+    String location = map["location"];
     String assetImage = isDayTime ? "day.jpg" : "night.jpg";
     String timeAsStr = intl.DateFormat.jm().format(time);
 
     return Scaffold(
+      backgroundColor: isDayTime? Colors.lightBlue : Colors.blueGrey[900],
       body: SafeArea(
           child: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/$assetImage"),
                 fit: BoxFit.cover)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "/choose_location");
-                },
-                icon: const Icon(Icons.edit_location)),
-            Center(
-              child: Text(
-                timeAsStr,
-                style: const TextStyle(
-                    fontSize: 28.0, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () async {
+                    map = await Navigator.pushNamed(context, "/choose_location") as Map;
+                    setState(() {
+                      time = map["time"];
+                      isDayTime = map["isDayTime"];
+                      location =  map["location"];
+                    });
+                  },
+                  icon: const Icon(Icons.edit_location)),
+              Center(
+                child: Text(
+                  location,
+                  style: const TextStyle(
+                      fontSize: 40.0, fontWeight: FontWeight.bold),
+                ),
               ),
-            )
-          ],
+              Center(
+                child: Text(
+                  timeAsStr,
+                  style: const TextStyle(
+                      fontSize: 55.0, fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
         ),
       )),
     );

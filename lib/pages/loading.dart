@@ -10,17 +10,19 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
+  
   String time = "loading";
 
   void getTime() async {
-    WorldTime worldTime = WorldTime();
-    DateTime dateTime = await worldTime.getTime();
+    WorldTime worldTime =
+        WorldTime(endPoint: "Asia/Kolkata", assetName: "India.jpg");
+    await worldTime.getTime();
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, "/location",
-        arguments: {"time": dateTime, "isDayTime" : worldTime.isDayTime});
-    // setState(() {
-    //   time = dateTime.toString();
-    // });
+    Navigator.pushReplacementNamed(context, "/location", arguments: {
+      "time": worldTime.worldTime,
+      "isDayTime": worldTime.isDayTime,
+      "location": worldTime.location
+    });
   }
 
   @override
